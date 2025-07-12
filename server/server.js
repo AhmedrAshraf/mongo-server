@@ -17,7 +17,6 @@ const MONGODB_URI = "mongodb+srv://ahmed:ahmed@cluster0.0hhtvrr.mongodb.net/smit
 mongoose.connect(MONGODB_URI)
 .then(() => {
   console.log('✅ Connected to MongoDB successfully');
-  console.log('📊 Database: smit-project');
 })
 .catch((error) => {
   console.error('❌ MongoDB connection error:', error);
@@ -36,9 +35,6 @@ const dataSchema = new mongoose.Schema({
 
 const Data = mongoose.model('Data', dataSchema);
 
-// Routes
-
-// Health check
 app.get('/', (req, res) => {
   res.json({
     message: '🚀 MongoDB Server is running!',
@@ -93,13 +89,4 @@ app.get('/api/data', async (req, res) => {
   }
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
-  console.log(`📊 Database: smit-project`);
-  console.log(`🌐 API Base URL: http://localhost:${PORT}`);
-  console.log(`📝 API Endpoints:`);
-  console.log(`   GET    /              - Health check`);
-  console.log(`   POST   /api/add       - Add data to MongoDB`);
-  console.log(`   GET    /api/data      - Get all data from MongoDB`);
-}); 
+app.listen(PORT, () => {console.log(`🚀 Server is running on port ${PORT}`);}); 
